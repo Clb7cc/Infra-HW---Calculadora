@@ -11,3 +11,4 @@ Desenvolver uma calculadora didática de conversão entre bases e ponto flutuant
 
 Relatório dos Commits do cógigo fonte: 
 1. Adição da função para transformar número decimal para binário (na void e na main também).
+2. Adição da função para transformar número decimal para octal (na void e na main também).
