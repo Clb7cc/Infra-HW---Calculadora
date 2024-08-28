@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include <stdio.h>
-
 void dec_Bin(int numx) {
     int bin[32];
     int cont = 0;
@@ -103,10 +101,6 @@ void dec_BCD(int numx) {
     printf("\n");
 }
 
-#include <stdio.h>
-
-#include <stdio.h>
-
 void dec_Comp2(int numx) {
     unsigned short bin = (unsigned short)numx; 
     char bin_arr[16]; 
@@ -114,7 +108,6 @@ void dec_Comp2(int numx) {
 
     printf("Número: %d\n", numx);
 
-    // Conversão para binário
     printf("Número em binário (16 bits): ");
     for (int i = 15; i >= 0; i--) {
         printf("%d", (bin >> i) & 1);
@@ -147,28 +140,46 @@ void dec_Comp2(int numx) {
     printf("\n");
 }
 
-int main() {
-    int number;
-    printf("Digite um número: ");
-    scanf("%d", &number);
-    dec_Comp2(number);
-    return 0;
+void float_Representation(float numx) {
+    unsigned int* ptr = (unsigned int*)&numx;
+    unsigned int bits = *ptr;
+
+    printf("Representação de %.2f como float:\n", numx);
+    printf("Sinal: %d\n", (bits >> 31) & 1);
+    printf("Expoente: ");
+    for (int i = 30; i >= 23; i--) {
+        printf("%d", (bits >> i) & 1);
+    }
+    printf("\nFrações: ");
+    for (int i = 22; i >= 0; i--) {
+        printf("%d", (bits >> i) & 1);
+    }
+    printf("\n");
 }
 
+void double_Rpr(double numx) {
+    unsigned long long* ptr = (unsigned long long*)&numx;
+    unsigned long long bits = *ptr;
 
-int main() {
-    int num;
-    printf("Digite um número: ");
-    scanf("%d", &num);
-    dec_Comp2(num);
-    return 0;
+    printf("Representação de %.2lf como double:\n", numx);
+    printf("Sinal: %d\n", (int)((bits >> 63) & 1));
+    printf("Expoente: ");
+    for (int i = 62; i >= 52; i--) {
+        printf("%d", (int)((bits >> i) & 1));
+    }
+    printf("\nFrações: ");
+    for (int i = 51; i >= 0; i--) {
+        printf("%d", (int)((bits >> i) & 1));
+    }
+    printf("\n");
 }
 
-
-
 int main() {
+
     int numf;
     int opc;
+    float num_float;
+    double num_double;
 
     printf("Escolha o tipo de conversão que deseja utilizar:\n");
     printf("0 - Converter para Binário\n");
@@ -213,8 +224,10 @@ int main() {
             dec_Comp2(numf);
             break;
         case 5:
+            float_Rpr(num_float);
             break;
         case 6:
+            double_Rpr(num_double);
             break;
         default:
             printf("Opção incorreta.\n");
