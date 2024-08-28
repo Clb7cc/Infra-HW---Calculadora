@@ -81,6 +81,29 @@ void dec_Hex(int numx) {
     printf("\n");
 }
 
+void dec_BCD(int numx) {
+    printf("Número em BCD: ");
+    int temp = numx;
+    int digitos[32];
+    int cont = 0;
+
+    while (temp > 0) {
+        digitos[cont] = temp % 10;
+        temp = temp / 10;
+        cont++;
+    }
+
+    for (int i = cont - 1; i >= 0; i--) {
+        int digito = digitos[i];
+        for (int j = 3; j >= 0; j--) {
+            printf("%d", (digito >> j) & 1);
+        }
+        printf(" ");
+    }
+    printf("\n");
+}
+
+
 
 int main() {
     int numf;
@@ -121,6 +144,8 @@ int main() {
             dec_Hex(numf);
             break;
         case 3:
+            printf("Convertendo %d para BCD:\n", numf);
+            dec_BCD(numf);
             break;
         case 4:
             break;
