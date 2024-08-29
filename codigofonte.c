@@ -1,3 +1,18 @@
+//Feito por Caio Lima Bezerra
+//Link do Github: https://github.com/Clb7cc/Infra-HW---Calculadora
+//
+//Relatório dos Commits :
+//Adição da função para transformar número decimal para binário (na void e na main também) - 23/08/2023 ás 14:31.
+//Adição da função para transformar número decimal para octal (na void e na main também) - 23/08/2023 ás 19:15.
+//Adição da função para transformar número decimal para hexadecimal (na void e na main também) - 28/08/2023 ás 16:40.
+//Adição da função para transformar número decimal para BCD (na void e na main também) - 28/08/2023 ás 17:22.
+//Adição da função para transformar a complemento a 2 (na void e na main também) - 28/08/2023 ás 19:01.
+//Adição da função para converter real em decimal para float e double (na void e na main também) - 28/08/2023 ás 22:08.
+//Revisão das funções e adição da descrição dos commits - 29/08/2023 ás 11:23.
+//
+//Data de Começo : 23/08/2024
+//Data de Finalização : 29/08/2024
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -196,7 +211,11 @@ int main() {
         printf("Digite um número decimal: ");
         scanf("%d", &numf);
     } else if (opc == 5) {
+        printf("Digite um número real (float): ");
+        scanf("%f", &num_float);
     } else if (opc == 6) {
+        printf("Digite um número real (double): ");
+        scanf("%lf", &num_double);
     } else {
         printf("Opção incorreta.\n");
         return 1;
@@ -224,7 +243,7 @@ int main() {
             dec_Comp2(numf);
             break;
         case 5:
-            float_Rpr(num_float);
+            float_Representation(num_float);
             break;
         case 6:
             double_Rpr(num_double);
